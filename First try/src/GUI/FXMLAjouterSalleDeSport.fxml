@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="424.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLSalleDeSportController">
+<AnchorPane id="AnchorPane" prefHeight="424.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAjouterSalleDeSportController">
    <children>
       <TextField fx:id="nom" layoutX="148.0" layoutY="115.0" />
       <TextField fx:id="adresse" layoutX="148.0" layoutY="152.0" />
@@ -53,5 +53,10 @@
             <Image url="@../../../../../Pictures/Capture.PNG" />
          </image>
       </ImageView>
+       <Button fx:id="boutonRetourSS" layoutX="155.0" layoutY="317.0" mnemonicParsing="false" onAction="#retourAction" prefHeight="37.0" prefWidth="75.0" text="Retour">
+    <font>
+        <Font name="System Italic" size="16.0" />
+    </font>
+</Button>
    </children>
 </AnchorPane>

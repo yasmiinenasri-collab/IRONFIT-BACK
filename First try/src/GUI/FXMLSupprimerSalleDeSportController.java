@@ -20,10 +20,20 @@ import services.ServicesSalleDeSport;
 
 public class FXMLSupprimerSalleDeSportController implements Initializable {
     @FXML
-    private TextField idSalleDeSport; // Champ pour saisir l'ID de la salle de sport à supprimer
+    private TextField idSalleDeSport; 
     @FXML
     private Button btnSupprimerSS;
-
+    @FXML
+    private Button btnRetourSSS;
+    @FXML
+private void retourAction(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));   
+        btnRetourSSS.getScene().setRoot(root);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btnSupprimerSS.setOnAction(new EventHandler<ActionEvent>() {

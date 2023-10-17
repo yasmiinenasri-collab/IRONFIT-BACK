@@ -14,51 +14,65 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
 import models.SalleDeSport;
 import services.ServicesSalleDeSport;
 
 public class FXMLModifierSalleDeSportController implements Initializable {
     @FXML
-    private TextField adresse;
+    private TextField idSalleDeSport; 
+    @FXML
+    private TextField nom; 
+    @FXML
+    private TextField adresse; 
+    @FXML
+    private TextField capacite; 
+    @FXML
+    private TextField specialite;
     @FXML
     private Button btnModifierSS;
     @FXML
-    private TextField capacite;
-    @FXML
-    private TextField nom;
-    @FXML
-    private TextField specialite;
-
-    private SalleDeSport salleDeSport; // L'objet salle de sport à modifier
-
+    private Button BoutonRetourMS;
+ @FXML
+private void retourAction(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));   
+        BoutonRetourMS.getScene().setRoot(root);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btnModifierSS.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 ServicesSalleDeSport ss = new ServicesSalleDeSport();
-                int Capacite = Integer.parseInt(capacite.getText());
-
-                // Mettez à jour les propriétés de la salle de sport
-                salleDeSport.setNom(nom.getText());
-                salleDeSport.setAdresse(adresse.getText());
-                salleDeSport.setCapacite(Capacite);
-                salleDeSport.setSpecialite(specialite.getText());
 
                 try {
-                    // Vérifiez d'abord si le nouveau nom est déjà utilisé par une autre salle de sport
-                    if (!nomExisteDeja(nom.getText(), salleDeSport.getId())) {
-                        // Appelez la méthode de service pour mettre à jour la salle de sport
+                    int id = Integer.parseInt(idSalleDeSport.getText());
+
+                    // Vérifiez d'abord si l'ID existe dans la base de données
+                    if (idSalleDeSportExiste(id)) {
+                        SalleDeSport salleDeSport = ss.getOneSalleDeSportById(id);
+                        // Mettez à jour les informations de la salle de sport
+                        salleDeSport.setNom(nom.getText());
+                        salleDeSport.setAdresse(adresse.getText());
+                        salleDeSport.setCapacite(capacite.getText());
+                        salleDeSport.setSpecialite(specialite.getText());
+                        
+                        // Appelez la méthode de service pour modifier la salle de sport
                         ss.modifierSalleDeSport(salleDeSport);
 
                         // Redirigez l'utilisateur vers une interface pour afficher les salles de sport
                         Parent root = FXMLLoader.load(getClass().getResource("FXMLafficheSalleDeSport.fxml"));
-                        nom.getScene().setRoot(root);
+                        idSalleDeSport.getScene().setRoot(root);
                     } else {
-                        // Affichez un message d'erreur si le nom existe déjà
-                        afficherAlerte("Nom déjà utilisé", "Le nom de la salle de sport existe .");
+                        // Affichez un message d'erreur si l'ID n'existe pas
+                        afficherAlerte("ID non trouvé", "L'ID de la salle de sport n'existe pas dans la base de données.");
                     }
+                } catch (NumberFormatException ex) {
+                    // Gérez une erreur si l'ID n'est pas un nombre valide
+                    afficherAlerte("Erreur de saisie", "Veuillez saisir un ID de salle de sport valide.");
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLModifierSalleDeSportController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -66,26 +80,12 @@ public class FXMLModifierSalleDeSportController implements Initializable {
         });
     }
 
-    // Méthode pour définir la salle de sport à modifier
-    public void setSalleDeSport(SalleDeSport salleDeSport) {
-        this.salleDeSport = salleDeSport;
-        // Pré-remplissez les champs avec les données de la salle de sport à modifier
-        nom.setText(salleDeSport.getNom());
-        adresse.setText(salleDeSport.getAdresse());
-        capacite.setText(String.valueOf(salleDeSport.getCapacite()));
-        specialite.setText(salleDeSport.getSpecialite());
-    }
-
-    // Méthode pour vérifier si le nom de salle de sport existe déjà (dans la base de données)
-    private boolean nomExisteDeja(String nouveauNom, int idSalleAModifier) {
+    // Méthode pour vérifier si l'ID de salle de sport existe dans la base de données
+    private boolean idSalleDeSportExiste(int id) {
         ServicesSalleDeSport ss = new ServicesSalleDeSport();
-        SalleDeSport salleExistante = ss.getOneSalleDeSport(new SalleDeSport(nouveauNom, "", 0, ""));
+        SalleDeSport salleExistante = ss.getOneSalleDeSportById(id);
 
-        if (salleExistante != null && salleExistante.getId() != idSalleAModifier) {
-            return true; // Le nom existe déjà dans une autre salle de sport
-        } else {
-            return false;
-        }
+        return (salleExistante != null);
     }
 
     // Méthode pour afficher une alerte

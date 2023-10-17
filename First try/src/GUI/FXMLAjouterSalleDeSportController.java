@@ -32,14 +32,26 @@ public class FXMLAjouterSalleDeSportController implements Initializable{
     @FXML
     private TextField specialite;
        
+     @FXML
+    private Button boutonRetourSS;
+
+   @FXML
+private void retourAction(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));   
+        boutonRetourSS.getScene().setRoot(root);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
         @Override
         public void initialize(URL url, ResourceBundle rb) {
         btnAjouterSS.setOnAction(new EventHandler<ActionEvent>() {
            @Override
            public void handle(ActionEvent event) {
                ServicesSalleDeSport ss = new ServicesSalleDeSport();
-               int Capacite = Integer.parseInt(capacite.getText());
-            SalleDeSport salleDeSport = new SalleDeSport(nom.getText(), adresse.getText(), Capacite, specialite.getText());
+             
+            SalleDeSport salleDeSport = new SalleDeSport(nom.getText(), adresse.getText(), capacite.getText(), specialite.getText());
             try {
             ss.ajouterSalleDeSport(salleDeSport);
             Parent root= FXMLLoader.load(getClass().getResource("FXMLafficheSalleDeSport.fxml"));

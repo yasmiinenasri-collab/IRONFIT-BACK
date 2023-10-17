@@ -27,7 +27,17 @@ public class FXMLGetOneSalleDeSportController implements Initializable {
     private Button btnGetOneSS;
     @FXML
     private Text resultText; 
-
+    @FXML
+    private Button BoutonRetourGO;
+    @FXML
+private void retourAction(ActionEvent event) {
+    try {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));   
+        BoutonRetourGO.getScene().setRoot(root);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btnGetOneSS.setOnAction(new EventHandler<ActionEvent>() {
