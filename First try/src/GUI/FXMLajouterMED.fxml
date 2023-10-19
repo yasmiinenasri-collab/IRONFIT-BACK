@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLajouterMEDcontroler">
+   <children>
+      <ImageView fitHeight="412.0" fitWidth="607.0" layoutX="-6.0" layoutY="-6.0">
+         <image>
+            <Image url="@../../../../../Downloads/test.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="406.0" prefWidth="151.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView layoutX="12.0" layoutY="10.0">
+               <image>
+                  <Image url="@../../../Ironfit.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="42.0" layoutY="67.0" text="Nom Medecin">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="108.0" text="Prenom Medecin">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="147.0" text="Spécialité">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="183.0" text="Adresse">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="71.0" layoutY="222.0" text="Email">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="79.0" layoutY="264.0" text="Tel">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="nommedecin" layoutX="195.0" layoutY="66.0" />
+      <TextField fx:id="prenommedecin" layoutX="195.0" layoutY="109.0" />
+      <TextField fx:id="specialitemedecin" layoutX="195.0" layoutY="146.0" />
+      <TextField fx:id="adressemedecin" layoutX="195.0" layoutY="178.0" />
+      <TextField fx:id="emailmedecin" layoutX="195.0" layoutY="219.0" />
+      <TextField fx:id="telmedecin" layoutX="195.0" layoutY="260.0" />
+      <Button fx:id="btnajoutermedecin" layoutX="480.0" layoutY="328.0" mnemonicParsing="false" text="Ajouter" />
+      <Text fill="#fcf7f7" layoutX="254.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter medecin">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="label" layoutX="195.0" layoutY="299.0" text="Label" />
+   </children>
+</AnchorPane>
