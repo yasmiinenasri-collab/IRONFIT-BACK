@@ -2,9 +2,8 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import models.Abonnement;
 import services.ServicesAbonnement;
@@ -20,13 +21,13 @@ import services.ServicesAbonnement;
 public class FXMLModifierAbonnementController implements Initializable {
 
     @FXML
-    private TextField idAbonnement;
+    private ComboBox<String> comboBoxTypeAbonnement;
     @FXML
     private TextField type;
     @FXML
-    private TextField datedebut;
+    private DatePicker datedebut;  // Remplacé par DatePicker
     @FXML
-    private TextField datefin;
+    private DatePicker datefin;   // Remplacé par DatePicker
     @FXML
     private TextField prix;
     @FXML
@@ -37,7 +38,7 @@ public class FXMLModifierAbonnementController implements Initializable {
     @FXML
     private void retourAction12(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheAbonnement.fxml"));   
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheAbonnement.fxml"));
             btnRetourMAB.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,62 +47,58 @@ public class FXMLModifierAbonnementController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ServicesAbonnement servicesAbonnements = new ServicesAbonnement();
+
+        // Utilisez la méthode getTypesAbonnements pour obtenir la liste des types d'abonnements
+        comboBoxTypeAbonnement.getItems().addAll(servicesAbonnements.getTypesAbonnements());
+
         btnModifierAbonnement.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 ServicesAbonnement sa = new ServicesAbonnement();
 
                 try {
-                    int id = Integer.parseInt(idAbonnement.getText());
+                    String typeAbonnement = comboBoxTypeAbonnement.getValue();
 
-                    // Vérifiez d'abord si l'ID existe dans la base de données
-                    if (abonnementExiste(id)) {
-                        Abonnement abonnement = sa.getAbonnementById(id);
-                        // Mettez à jour les informations de l'abonnement
+                    if (abonnementExiste(typeAbonnement)) {
+                        Abonnement abonnement = sa.getAbonnementByType(typeAbonnement);
+
                         abonnement.setType(type.getText());
-                        
-                        // Vérifiez que les dates sont au format "jj-mm-yyyy"
-                        String dateDebut = datedebut.getText();
-                        String dateFin = datefin.getText();
-                        if (!estFormatDateValide(dateDebut) || !estFormatDateValide(dateFin)) {
-                            afficherAlerte("Format de date invalide", "Le format de date doit être jj-mm-yyyy.");
+
+                        LocalDate dateDebut = datedebut.getValue();
+                        LocalDate dateFin = datefin.getValue();
+
+                        if (dateDebut == null || dateFin == null) {
+                            afficherAlerte("Champs de date vides", "Veuillez sélectionner la date de début et la date de fin.");
                             return;
                         }
 
-                        // Vérifiez que les jours, mois et années sont dans les limites spécifiées
-                        if (!estDateValide(dateDebut) || !estDateValide(dateFin)) {
-                            afficherAlerte("Date non valide", "Les jours doivent être de 1 à 31, les mois de 1 à 12 et l'année jusqu'à 2026.");
-                            return;
-                        }
+                        abonnement.setDateDebut(dateDebut.toString());
+                        abonnement.setDateFin(dateFin.toString());
 
-                        abonnement.setDateDebut(dateDebut);
-                        abonnement.setDateFin(dateFin);
-                        
                         abonnement.setPrix(Double.parseDouble(prix.getText()));
 
-                        // Appelez la méthode de service pour modifier l'abonnement
                         sa.modifierAbonnement(abonnement);
 
-                        // Redirigez l'utilisateur vers une interface pour afficher les abonnements
                         Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheAbonnement.fxml"));
-                        idAbonnement.getScene().setRoot(root);
+                        btnModifierAbonnement.getScene().setRoot(root);
                     } else {
-                        // Affichez un message d'erreur si l'ID n'existe pas
-                        afficherAlerte("ID non trouvé", "L'ID de l'abonnement n'existe pas dans la base de données.");
+
+                        afficherAlerte("Type d'abonnement non trouvé", "Le type d'abonnement sélectionné n'existe pas dans la base de données.");
                     }
-                } catch (NumberFormatException ex) {
-                    // Gérez une erreur si l'ID n'est pas un nombre valide
-                    afficherAlerte("Erreur de saisie", "Veuillez saisir un ID d'abonnement valide.");
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLModifierAbonnementController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    afficherAlerte("Erreur de saisie", "Veuillez sélectionner un type d'abonnement valide.");
                 }
             }
         });
     }
 
-    private boolean abonnementExiste(int id) {
+    private boolean abonnementExiste(String typeAbonnement) {
         ServicesAbonnement sa = new ServicesAbonnement();
-        Abonnement abonnementExistant = sa.getAbonnementById(id);
+
+        // Utilisez la méthode getAbonnementByType ou toute autre méthode appropriée pour vérifier l'existence du type d'abonnement
+        Abonnement abonnementExistant = sa.getAbonnementByType(typeAbonnement);
+
         return (abonnementExistant != null);
     }
 
@@ -111,21 +108,5 @@ public class FXMLModifierAbonnementController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(contenu);
         alert.showAndWait();
-    }
-
-    // Méthode pour vérifier le format de date "jj-mm-yyyy"
-    private boolean estFormatDateValide(String date) {
-        String pattern = "\\d{2}-\\d{2}-\\d{4}";
-        return date.matches(pattern);
-    }
-
-    // Méthode pour vérifier que les jours, mois et années sont dans les limites spécifiées
-    private boolean estDateValide(String date) {
-        String[] partiesDate = date.split("-");
-        int jour = Integer.parseInt(partiesDate[0]);
-        int mois = Integer.parseInt(partiesDate[1]);
-        int annee = Integer.parseInt(partiesDate[2]);
-
-        return (jour >= 1 && jour <= 31 && mois >= 1 && mois <= 12 && annee <= 2026);
     }
 }

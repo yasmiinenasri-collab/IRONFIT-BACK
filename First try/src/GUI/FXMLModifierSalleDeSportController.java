@@ -13,66 +13,75 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import models.SalleDeSport;
 import services.ServicesSalleDeSport;
 
 public class FXMLModifierSalleDeSportController implements Initializable {
     @FXML
-    private TextField idSalleDeSport; 
+    private ComboBox<String> NomSalleDeSporTt; 
     @FXML
-    private TextField nom; 
+    private TextField nom;
     @FXML
-    private TextField adresse; 
+    private TextField adresse;
     @FXML
-    private TextField capacite; 
+    private TextField capacite;
     @FXML
     private TextField specialite;
     @FXML
     private Button btnModifierSS;
     @FXML
     private Button BoutonRetourMS;
- @FXML
-private void retourAction(ActionEvent event) {
-    try {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));   
-        BoutonRetourMS.getScene().setRoot(root);
-    } catch (IOException e) {
-        e.printStackTrace();
+
+    @FXML
+    private void retourAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheSalleDeSport.fxml"));
+            BoutonRetourMS.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ServicesSalleDeSport ss = new ServicesSalleDeSport();
+
+        // Remplissez le ComboBox avec les noms des salles de sport
+        NomSalleDeSporTt.getItems().addAll(ss.getAllSalleDeSportNames());
+
         btnModifierSS.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ServicesSalleDeSport ss = new ServicesSalleDeSport();
-
                 try {
-                    int id = Integer.parseInt(idSalleDeSport.getText());
+                    String selectedNom = NomSalleDeSporTt.getValue(); // Obtenez le nom sélectionné
 
-                    // Vérifiez d'abord si l'ID existe dans la base de données
-                    if (idSalleDeSportExiste(id)) {
-                        SalleDeSport salleDeSport = ss.getOneSalleDeSportById(id);
-                        // Mettez à jour les informations de la salle de sport
+                    if (nomSalleDeSportExiste(selectedNom)) {
+                        SalleDeSport salleDeSport = ss.getOneSalleDeSport(selectedNom); // Obtenez la salle de sport par son nom
+
                         salleDeSport.setNom(nom.getText());
                         salleDeSport.setAdresse(adresse.getText());
-                        salleDeSport.setCapacite(capacite.getText());
+
+                        try {
+                            int capaciteValue = Integer.parseInt(capacite.getText());
+                            salleDeSport.setCapacite(String.valueOf(capaciteValue));
+                        } catch (NumberFormatException e) {
+                            afficherAlerte("Erreur de saisie", "La capacité doit être un nombre entier.");
+                            return;
+                        }
+
                         salleDeSport.setSpecialite(specialite.getText());
-                        
-                        // Appelez la méthode de service pour modifier la salle de sport
+
                         ss.modifierSalleDeSport(salleDeSport);
 
-                        // Redirigez l'utilisateur vers une interface pour afficher les salles de sport
                         Parent root = FXMLLoader.load(getClass().getResource("FXMLafficheSalleDeSport.fxml"));
-                        idSalleDeSport.getScene().setRoot(root);
+                        NomSalleDeSporTt.getScene().setRoot(root);
                     } else {
-                        // Affichez un message d'erreur si l'ID n'existe pas
-                        afficherAlerte("ID non trouvé", "L'ID de la salle de sport n'existe pas dans la base de données.");
+                        afficherAlerte("Nom non trouvé", "Le nom de la salle de sport n'existe pas dans la base de données.");
                     }
                 } catch (NumberFormatException ex) {
-                    // Gérez une erreur si l'ID n'est pas un nombre valide
-                    afficherAlerte("Erreur de saisie", "Veuillez saisir un ID de salle de sport valide.");
+                    afficherAlerte("Erreur de saisie", "Veuillez sélectionner un nom de salle de sport valide.");
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLModifierSalleDeSportController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -80,15 +89,13 @@ private void retourAction(ActionEvent event) {
         });
     }
 
-    // Méthode pour vérifier si l'ID de salle de sport existe dans la base de données
-    private boolean idSalleDeSportExiste(int id) {
+    private boolean nomSalleDeSportExiste(String nom) {
         ServicesSalleDeSport ss = new ServicesSalleDeSport();
-        SalleDeSport salleExistante = ss.getOneSalleDeSportById(id);
+        SalleDeSport salleExistante = ss.getOneSalleDeSport(nom);
 
         return (salleExistante != null);
     }
 
-    // Méthode pour afficher une alerte
     private void afficherAlerte(String titre, String contenu) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titre);

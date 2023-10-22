@@ -10,8 +10,8 @@ import java.time.LocalDate;
 public class Abonnement {
     private int id;
     private String type;
-    private LocalDate dateDebut; 
-    private LocalDate dateFin;   
+    private String dateDebut; 
+    private String dateFin;   
     private double prix;
     private int idSalleDeSport ;
     private SalleDeSport SalleDeSport ;
@@ -24,15 +24,16 @@ public class Abonnement {
     }
     
 
-    public Abonnement(int id, String type, LocalDate dateDebut, LocalDate dateFin, double prix) {
+    public Abonnement(int id, String type, String dateDebut, String dateFin, double prix) {
         this.id = id;
         this.type = type;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.prix = prix;
     }
+    
 
-    public Abonnement(String type, LocalDate dateDebut, LocalDate dateFin, double prix) {
+    public Abonnement(String type, String dateDebut, String dateFin, double prix) {
         this.type = type;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -57,19 +58,19 @@ public class Abonnement {
         this.type = type;
     }
 
-    public LocalDate getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(LocalDate dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public LocalDate getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(LocalDate dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 

@@ -21,6 +21,9 @@ public interface IServiceAbonnement <T> {
     public void supprimerAbonnement(int O, int B);
     //public T getOneAbonnement(T t);
     //public List<T> getAllAbonnement(T t);
+    public Abonnement getAbonnementById(int J);
    List<Abonnement> afficherAbonnement() throws SQLException;
+    public int getIdSalleDeSportByNom(String B) ;
+   
     
 }

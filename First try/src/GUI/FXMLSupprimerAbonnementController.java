@@ -19,9 +19,9 @@ import services.ServicesAbonnement;
 
 public class FXMLSupprimerAbonnementController implements Initializable {
     @FXML
-    private TextField idAbonnement; // Champ pour saisir l'ID de l'abonnement à supprimer
+    private TextField idAbonnement; 
     @FXML
-    private TextField idSalleDeSport; // Champ pour saisir l'ID de la salle de sport liée à l'abonnement
+    private TextField idSalleDeSport; 
     @FXML
     private Button btnSupprimerAbonnement;
     @FXML
@@ -46,20 +46,20 @@ private void retourAction(ActionEvent event) {
                     int idAbonnementValue = Integer.parseInt(idAbonnement.getText());
                     int idSalleDeSportValue = Integer.parseInt(idSalleDeSport.getText());
 
-                    // Vérifiez d'abord si l'abonnement existe dans la base de données
+                  
                     if (abonnementExiste(idAbonnementValue, idSalleDeSportValue)) {
-                        // Appelez la méthode de service pour supprimer l'abonnement
+              
                         sa.supprimerAbonnement(idAbonnementValue, idSalleDeSportValue);
 
-                        // Redirigez l'utilisateur vers une interface pour afficher les abonnements
+                      
                         Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheAbonnement.fxml"));
                         idAbonnement.getScene().setRoot(root);
                     } else {
-                        // Affichez un message d'erreur si l'abonnement n'existe pas
+         
                         afficherAlerte("Abonnement non trouvé", "L'abonnement n'existe pas dans la base de données.");
                     }
                 } catch (NumberFormatException ex) {
-                    // Gérez une erreur si l'ID n'est pas un nombre valide
+            
                     afficherAlerte("Erreur de saisie", "Veuillez saisir des ID d'abonnement et de salle de sport valides.");
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLSupprimerAbonnementController.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,21 +68,18 @@ private void retourAction(ActionEvent event) {
         });
     }
 
-    // Méthode pour vérifier si l'abonnement existe dans la base de données
-   // Méthode pour vérifier si l'abonnement existe dans le service
+   
 private boolean abonnementExiste(int idAbonnement, int idSalleDeSport) {
     ServicesAbonnement sa = new ServicesAbonnement();
 
-    // Remplacez ce code par la vérification réelle de l'existence de l'abonnement dans votre service
-    // Vous devez adapter cette partie en fonction de la structure de votre service
+    
     Abonnement abonnement = sa.getAbonnementById(idAbonnement);
 
-    // Si l'abonnement n'est pas nul, il existe
+ 
     return (abonnement != null);
 }
 
 
-    // Méthode pour afficher une alerte
     private void afficherAlerte(String titre, String contenu) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titre);

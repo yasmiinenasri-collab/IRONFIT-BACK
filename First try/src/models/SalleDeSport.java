@@ -13,13 +13,13 @@ public class SalleDeSport {
      private int idSalleDeSport;
      private String nom;
      private String adresse;
-     private int capacite;
+     private String capacite;
      private String specialite;
 
     public SalleDeSport() {
     }
 
-    public SalleDeSport(int id, String nom, String adresse, int capacite, String specialite) {
+    public SalleDeSport(int id, String nom, String adresse, String capacite, String specialite) {
         this.idSalleDeSport = id;
         this.nom = nom;
         this.adresse = adresse;
@@ -27,7 +27,7 @@ public class SalleDeSport {
         this.specialite = specialite;
     }
 
-    public SalleDeSport(String nom, String adresse, int capacite, String specialite) {
+    public SalleDeSport(String nom, String adresse, String capacite, String specialite) {
         this.nom = nom;
         this.adresse = adresse;
         this.capacite = capacite;
@@ -58,11 +58,11 @@ public class SalleDeSport {
         this.adresse = adresse;
     }
 
-    public int getCapacite() {
+    public String getCapacite() {
         return capacite;
     }
 
-    public void setCapacite(int capacite) {
+    public void setCapacite(String capacite) {
         this.capacite = capacite;
     }
 

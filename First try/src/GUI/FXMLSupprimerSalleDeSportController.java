@@ -44,20 +44,19 @@ private void retourAction(ActionEvent event) {
                 try {
                     int id = Integer.parseInt(idSalleDeSport.getText());
 
-                    // Vérifiez d'abord si l'ID existe dans la base de données
                     if (idSalleDeSportExiste(id)) {
-                        // Appelez la méthode de service pour supprimer la salle de sport
+           
                         ss.supprimerSalleDeSport(id);
 
-                        // Redirigez l'utilisateur vers une interface pour afficher les salles de sport
+ 
                         Parent root = FXMLLoader.load(getClass().getResource("FXMLafficheSalleDeSport.fxml"));
                         idSalleDeSport.getScene().setRoot(root);
                     } else {
-                        // Affichez un message d'erreur si l'ID n'existe pas
+                        
                         afficherAlerte("ID non trouvé", "L'ID de la salle de sport n'existe pas dans la base de données.");
                     }
                 } catch (NumberFormatException ex) {
-                    // Gérez une erreur si l'ID n'est pas un nombre valide
+        
                     afficherAlerte("Erreur de saisie", "Veuillez saisir un ID de salle de sport valide.");
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLSupprimerSalleDeSportController.class.getName()).log(Level.SEVERE, null, ex);
@@ -66,7 +65,7 @@ private void retourAction(ActionEvent event) {
         });
     }
 
-    // Méthode pour vérifier si l'ID de salle de sport existe dans la base de données
+
     private boolean idSalleDeSportExiste(int id) {
         ServicesSalleDeSport ss = new ServicesSalleDeSport();
         SalleDeSport salleExistante = ss.getOneSalleDeSportById(id);
@@ -74,7 +73,6 @@ private void retourAction(ActionEvent event) {
         return (salleExistante != null);
     }
 
-    // Méthode pour afficher une alerte
     private void afficherAlerte(String titre, String contenu) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(titre);
