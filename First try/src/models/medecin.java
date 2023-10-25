@@ -1,4 +1,4 @@
-package Models;
+package entite;
 
 public class medecin {
     private int id;

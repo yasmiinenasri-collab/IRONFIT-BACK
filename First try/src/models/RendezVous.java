@@ -1,4 +1,4 @@
-package Models;
+package entite;
 
 import java.util.Date;
 
