@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="408.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLajouterMEDcontroler">
+<AnchorPane id="AnchorPane" prefHeight="408.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLinformationsuppController">
    <children>
       <ImageView fitHeight="408.0" fitWidth="542.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -38,13 +38,13 @@
       <TextField fx:id="adressemedecin" layoutX="246.0" layoutY="188.0" prefHeight="32.0" prefWidth="165.0" promptText="Adresse" />
       <TextField fx:id="emailmedecin" layoutX="246.0" layoutY="234.0" prefHeight="32.0" prefWidth="165.0" promptText="Email" />
       <TextField fx:id="telmedecin" layoutX="246.0" layoutY="281.0" prefHeight="32.0" prefWidth="165.0" promptText="Tel" />
-      <Button id="but1" fx:id="btnajoutermedecin" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Ajouter " />
-      <Text fill="#fcf7f7" layoutX="238.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter medecin">
+      <Button id="but1" fx:id="btnajouterinfsupp" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnajouterinfsupp" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Ajouter " />
+      <Text fill="#fcf7f7" layoutX="201.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information Supplémentaire ">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Text>
       <Label fx:id="label" layoutX="195.0" layoutY="377.0" text="Label" />
-      <Button id="but1" fx:id="btn_retour_ajout" layoutX="195.0" layoutY="326.0" mnemonicParsing="false" onAction="#btn_retour_ajouter_med" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Retour " />
+      <Button id="but1" fx:id="btn_retour_info_supp_acc" layoutX="195.0" layoutY="326.0" mnemonicParsing="false" onAction="#btn_RInfoSuppAcc" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Retour " />
    </children>
 </AnchorPane>

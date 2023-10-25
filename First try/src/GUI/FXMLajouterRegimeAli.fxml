@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLajouterRegimeAlicontroler">
+   <children>
+      <ImageView fitHeight="488.0" fitWidth="642.0" layoutX="-41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/reggg.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="482.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView layoutX="41.0" layoutY="23.0">
+               <image>
+                  <Image url="@../../../Ironfit.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="22.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pomme du matin éloigne le médecin" wrappingWidth="155.13671875">
+               <font>
+                  <Font name="System Bold Italic" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Label layoutX="247.0" layoutY="30.0" text="Ajouter un Regime Alimentaire" textFill="#f8f7f7">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="typeRegime" layoutX="322.0" layoutY="162.0" prefHeight="35.0" prefWidth="149.0" promptText="type Regime" />
+      <TextField fx:id="nomMED" layoutX="322.0" layoutY="216.0" prefHeight="35.0" prefWidth="149.0" promptText="nom MED" />
+      <TextField fx:id="prenomMed" layoutX="322.0" layoutY="276.0" prefHeight="35.0" prefWidth="149.0" promptText="prenom MED" />
+      <TextField fx:id="prixRegime" layoutX="322.0" layoutY="113.0" prefHeight="35.0" prefWidth="149.0" promptText="prix Regime" />
+      <Button id="but" fx:id="btnajouterRegimeAli" layoutX="439.0" layoutY="357.0" mnemonicParsing="false" onAction="#ADD" prefHeight="35.0" prefWidth="90.0" stylesheets="@../Style/Style.css" text="Ajouter " />
+      <Label fx:id="label" layoutX="233.0" layoutY="429.0" text="Label" textFill="#fffdfd" />
+      <Button id="but" fx:id="retour_ajout_regime" layoutX="288.0" layoutY="357.0" mnemonicParsing="false" onAction="#retour_regime" prefHeight="35.0" prefWidth="90.0" stylesheets="@../Style/Style.css" text="Retour " />
+   </children>
+</AnchorPane>

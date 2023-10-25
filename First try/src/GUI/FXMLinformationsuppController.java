@@ -1,39 +1,42 @@
-
 package GUI;
 
 import APImed.APIsms;
-import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import services.ServiceM;
 import entite.medecin;
 import java.io.IOException;
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import services.ServiceM;
 
-public class FXMLajouterMEDcontroler implements Initializable {
-    @FXML
-    private Label label;
+public class FXMLinformationsuppController {
+      public Stage STAGE;
+    public Scene SCENE;
+    public Parent root;
 
     @FXML
     private TextField adressemedecin;
 
     @FXML
-    private Button btnajoutermedecin;
+    private Button btn_retour_info_supp_acc;
+
+    @FXML
+    private Button btnajouterinfsupp;
 
     @FXML
     private TextField emailmedecin;
+
+    @FXML
+    private Label label;
 
     @FXML
     private TextField nommedecin;
@@ -46,19 +49,24 @@ public class FXMLajouterMEDcontroler implements Initializable {
 
     @FXML
     private TextField telmedecin;
+     ServiceM serviceM = new ServiceM();
 
     @FXML
-    private Button btn_retour_ajout;
+    void btn_RInfoSuppAcc(ActionEvent event) {
+ try {
+            root = FXMLLoader.load(getClass().getResource("HomeMedecin.fxml"));
+            STAGE = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            SCENE = new Scene(root);
+            STAGE.setScene(SCENE);
+            STAGE.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLajouterMEDcontroler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-    public Stage STAGE;
-    public Scene SCENE;
-    public Parent root;
-
-    ServiceM serviceM = new ServiceM();
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        btnajoutermedecin.setOnAction(event -> {
+    @FXML
+    void btnajouterinfsupp(ActionEvent event) {
+        
             String nom = nommedecin.getText();
             String prenom = prenommedecin.getText();
             String specialite = specialitemedecin.getText();
@@ -100,20 +108,8 @@ public class FXMLajouterMEDcontroler implements Initializable {
                 alert.setContentText("Vérifiez le format du téléphone (8 chiffres) et de l'e-mail (doit être @gmail.com).");
                 alert.showAndWait();
             }
-        });
-    }
-
-    @FXML
-    void btn_retour_ajouter_med(ActionEvent event) {
-        try {
-            root = FXMLLoader.load(getClass().getResource("FXMLafficherMED.fxml"));
-            STAGE = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            SCENE = new Scene(root);
-            STAGE.setScene(SCENE);
-            STAGE.show();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLajouterMEDcontroler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+    
+
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLmodifierRegimeAliController">
+   <children>
+      <ImageView fitHeight="480.0" fitWidth="652.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/ppp.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="464.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView layoutX="36.0" layoutY="20.0">
+               <image>
+                  <Image url="@../../../Ironfit.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="49.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A tout repas, la faim est la meilleur et la plus piquante" wrappingWidth="96.13671875">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Text fill="WHITE" layoutX="265.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Regime Alimentaire">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="id_R" layoutX="340.0" layoutY="97.0" prefHeight="32.0" prefWidth="149.0" promptText="ID Regime" />
+      <TextField fx:id="prix_R" layoutX="340.0" layoutY="150.0" prefHeight="32.0" prefWidth="149.0" promptText="Prix Regime" />
+      <TextField fx:id="type_R" layoutX="340.0" layoutY="207.0" prefHeight="32.0" prefWidth="149.0" promptText="Type Regime" />
+      <TextField fx:id="nom_m_R" layoutX="340.0" layoutY="260.0" prefHeight="32.0" prefWidth="149.0" promptText="Nom Medecin" />
+      <TextField fx:id="prenom_m_R" layoutX="340.0" layoutY="313.0" prefHeight="32.0" prefWidth="149.0" promptText="Prenom Medecin" />
+      <Button id="but" fx:id="btn_modif_R" layoutX="447.0" layoutY="364.0" mnemonicParsing="false" onAction="#btn_modifier_regime" prefHeight="44.0" prefWidth="85.0" stylesheets="@../Style/Style.css" text="Modifer" />
+      <Button id="but" fx:id="btn_retour_M_R" layoutX="298.0" layoutY="364.0" mnemonicParsing="false" onAction="#btn_retour_modif_regime" prefHeight="44.0" prefWidth="85.0" stylesheets="@../Style/Style.css" text="Retour" />
+   </children>
+</AnchorPane>
