@@ -1,20 +1,23 @@
 package services;
-import Models.RegimeAli;
+import entite.RegimeAli;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import services.IserviceRA;
+import util.DataSource;
 
 public class ServiceRA implements IserviceRA<RegimeAli> {
     private Connection cnx;
 
-    public ServiceRA(Connection cnx) {
-        this.cnx = cnx;
+    public ServiceRA() {
+        this.cnx = DataSource.getInstance().getConnection();
     }
 
+
+    
+        
     @Override
     public void ajouter(RegimeAli ra) {
         // Trouver l'idMED en utilisant le nom et le prénom du médecin
@@ -98,7 +101,6 @@ public class ServiceRA implements IserviceRA<RegimeAli> {
         return null;
     }
 
-    @Override
     public List<RegimeAli> getAll(RegimeAli ra) {
         List<RegimeAli> regimes = new ArrayList<>();
         String req = "SELECT * FROM regimeAli WHERE nomMED = ? AND prenomMED = ?";
@@ -123,7 +125,7 @@ public class ServiceRA implements IserviceRA<RegimeAli> {
         return regimes;
     }
 
-    public int trouverIdMedecin(String nomMED, String prenomMED) {
+    public  int trouverIdMedecin(String nomMED, String prenomMED) {
         String req = "SELECT id FROM medecin WHERE nomMED = ? AND prenomMED = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -138,4 +140,29 @@ public class ServiceRA implements IserviceRA<RegimeAli> {
         }
         return -1; // Retourner -1 si le médecin n'est pas trouvé
     }
+
+    public List<RegimeAli> getAll() {
+         List<RegimeAli> regimes = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM regimeAli";
+            PreparedStatement pstmt = cnx.prepareStatement(req);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                RegimeAli regime = new RegimeAli();
+                regime.setId(rs.getInt("id"));
+                regime.setPrixRegime(rs.getDouble("prixRegime"));
+                regime.setTypeRegime(rs.getString("typeRegime"));
+                regime.setNomMED(rs.getString("nomMED"));
+                regime.setPrenomMED(rs.getString("prenomMED"));
+                regime.setIdMED(rs.getInt("idMED"));
+                regimes.add(regime);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return regimes;
+    
+    }
+
+   
 }

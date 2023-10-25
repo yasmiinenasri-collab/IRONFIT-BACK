@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import Models.RendezVous;
+import entite.RendezVous;
 import util.DataSource;
 
 public class ServiceRV implements IserviceRV<RendezVous> {
