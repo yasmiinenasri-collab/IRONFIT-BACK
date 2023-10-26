@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AfficherController">
+   <children>
+      <ImageView fitHeight="605.0" fitWidth="1022.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/394767011_1426690834910614_685556589692990969_n.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="productListView" fixedCellSize="50.0" layoutX="140.0" layoutY="106.0" prefHeight="378.0" prefWidth="589.0" style="-fx-background-color: #808080;" />
+      <Button id="dark" fx:id="retourBtn" layoutX="62.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleRetourBtn" prefHeight="39.0" prefWidth="154.0" stylesheets="@../folder/styyyle.css" text="retour" />
+      <Button id="dark" fx:id="displayBtn" layoutX="652.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleDisplayBtn" prefHeight="39.0" prefWidth="154.0" stylesheets="@../folder/styyyle.css" text="afficher le produit" />
+      <Text cache="true" fill="#b90d0d" layoutX="321.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Affichage des produits">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="103.0" fitWidth="115.0" layoutX="818.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/logo2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

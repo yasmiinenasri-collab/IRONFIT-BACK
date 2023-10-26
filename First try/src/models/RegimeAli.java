@@ -1,4 +1,4 @@
-package Models;
+package entite;
 
 public class RegimeAli {
     private int id;
@@ -112,5 +112,7 @@ public class RegimeAli {
 
     public RegimeAli() {
     }
+
+    
     
 }

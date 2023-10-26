@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="428.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.PanierController">
+   <children>
+      <ImageView fitHeight="443.0" fitWidth="676.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/395283434_703457107964964_8466337199148009906_n.png" />
+         </image>
+      </ImageView>
+      <Button id="dark" fx:id="afficherPanierBtn" layoutX="493.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleAfficherPanierBtn" prefHeight="38.0" prefWidth="133.0" stylesheets="@../folder/styyyle.css" text="valider l achat" />
+      <ListView fx:id="cartListView" layoutX="51.0" layoutY="14.0" prefHeight="408.0" prefWidth="399.0" style="-fx-background-color: #808080;" />
+      <Label fx:id="totalPriceLabel" layoutX="463.0" layoutY="95.0" text="prixTotal" textFill="#c45b5b">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="47.0" fitWidth="49.0" layoutX="554.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/logo2.png" />
+         </image>
+      </ImageView>
+      <Button id="dark" fx:id="retourBtn" layoutX="491.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleRetourBtn" prefHeight="43.0" prefWidth="134.0" stylesheets="@../folder/styyyle.css" text="retour">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

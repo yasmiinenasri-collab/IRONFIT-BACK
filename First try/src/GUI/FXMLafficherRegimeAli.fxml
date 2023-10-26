@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLafficherRegimeAlicontroler">
+   <children>
+      <ImageView fx:id="afficheregime" fitHeight="450.0" fitWidth="748.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Image/reggg.jpg" />
+         </image>
+      </ImageView>
+      <ListView fx:id="affichregime" layoutX="44.0" layoutY="68.0" prefHeight="314.0" prefWidth="494.0" />
+      <Text fill="#fffefe" layoutX="151.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des regime alimentaire">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Button id="but" fx:id="btn_suprime_regimeL" layoutX="441.0" layoutY="395.0" mnemonicParsing="false" onAction="#btn_supprime_regimeL" prefHeight="32.0" prefWidth="97.0" stylesheets="@../Style/Style.css" text="Supprimer " />
+      <Button id="but" fx:id="btn_ajouter_regimeL" layoutX="176.0" layoutY="395.0" mnemonicParsing="false" onAction="#btn_ajout_regimeL" prefHeight="32.0" prefWidth="97.0" stylesheets="@../Style/Style.css" text="Ajouter " />
+      <Button id="but" fx:id="btn_modif_regime_liste" layoutX="310.0" layoutY="395.0" mnemonicParsing="false" onAction="#btn_modifier_r_listeR" prefHeight="32.0" prefWidth="97.0" stylesheets="@../Style/Style.css" text="Modifier" />
+      <Button id="but" fx:id="btn_retour_L_Regime" layoutX="44.0" layoutY="395.0" mnemonicParsing="false" onAction="#btn_retour_liste_regime" prefHeight="32.0" prefWidth="97.0" stylesheets="@../Style/Style.css" text="Retour" />
+   </children>
+</AnchorPane>

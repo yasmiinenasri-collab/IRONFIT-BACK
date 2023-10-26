@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import Models.medecin;
+import entite.medecin;
 import util.DataSource;
 
 public class ServiceM implements IserviceM<medecin> {
@@ -64,7 +64,8 @@ public class ServiceM implements IserviceM<medecin> {
             System.out.println(ex.getMessage());
         }
     }
-     public int trouverIdMedecin(String nomMED, String prenomMED) {
+  
+    public int trouverIdMedecin(String nomMED, String prenomMED) {
         String req = "SELECT id FROM medecin WHERE nomMED = ? AND prenomMED = ?";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -127,27 +128,59 @@ public class ServiceM implements IserviceM<medecin> {
         }
         return medecins;
     }
+    
     public medecin getOneMedecinById(int id) {
-    try {
-        String req = "SELECT * FROM medecin WHERE id=?";
-        PreparedStatement pstmt = cnx.prepareStatement(req);
-        pstmt.setInt(1, id);
-        ResultSet rs = pstmt.executeQuery();
-        if (rs.next()) {
-            medecin m = new medecin();
-            m.setId(rs.getInt("id"));
-            m.setNomMED(rs.getString("nomMED"));
-            m.setPrenomMED(rs.getString("prenomMED"));
-            m.setSpecialite(rs.getString("specialite"));
-            m.setAdresse(rs.getString("adresse"));
-            m.setEmail(rs.getString("email"));
-            m.setTel(rs.getString("tel"));
-            return m;
+        try {
+            String req = "SELECT * FROM medecin WHERE id=?";
+            PreparedStatement pstmt = cnx.prepareStatement(req);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                medecin m = new medecin();
+                m.setId(rs.getInt("id"));
+                m.setNomMED(rs.getString("nomMED"));
+                m.setPrenomMED(rs.getString("prenomMED"));
+                m.setSpecialite(rs.getString("specialite"));
+                m.setAdresse(rs.getString("adresse"));
+                m.setEmail(rs.getString("email"));
+                m.setTel(rs.getString("tel"));
+                return m;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        return null; // Retourner null si le médecin n'est pas trouvé
     }
-    return null; // Retourner null si le médecin n'est pas trouvé
-}
 
+    public List<String> getSpecialitesMedecins() {
+        List<String> specialites = new ArrayList<>();
+        try {
+            String query = "SELECT DISTINCT specialite FROM medecin";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                specialites.add(resultSet.getString("specialite"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return specialites;
+    }
+
+    public int getMedecinCountBySpecialite(String specialite) {
+        int count = 0; // Initialiser le compteur à zéro
+        try {
+            String query = "SELECT COUNT(*) as medecinCount FROM medecin WHERE specialite = ?";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.setString(1, specialite);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                count = resultSet.getInt("medecinCount");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count; // Retourner le nombre de médecins pour la spécialité donnée
+    }
 }

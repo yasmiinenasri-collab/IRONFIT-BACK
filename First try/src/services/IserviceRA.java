@@ -20,3 +20,4 @@ public interface IserviceRA <RA> {
     public RA getOne(RA ra);
     public List<RA> getAll(RA ra);
 }
+

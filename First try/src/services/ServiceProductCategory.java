@@ -85,9 +85,10 @@ public class ServiceProductCategory {
                 int productId = resultSet.getInt("productId");
                 String productName = resultSet.getString("productName");
                 String description = resultSet.getString("description");
+                    byte[] image = resultSet.getBytes("image");
                 double price = resultSet.getDouble("price");
 
-                Product product = new Product(productId, productName, description, price, categoryId);
+                Product product = new Product( productName, description,image, price);
                 currentCategory.getProductIds().add(product);
             }
         } catch (SQLException ex) {
@@ -98,7 +99,7 @@ public class ServiceProductCategory {
     }
     public List<Product> chercherProduitsParCategorie(String categoryName) {
     List<Product> products = new ArrayList<>();
-    String req = "SELECT p.productId, p.productName, p.description, p.price " +
+    String req = "SELECT p.productId, p.productName, p.description,image, p.price " +
                  "FROM productCategory c " +
                  "JOIN productCategory_Products pcp ON c.categoryId = pcp.categoryId " +
                  "JOIN product p ON pcp.productId = p.productId " +
@@ -112,9 +113,10 @@ public class ServiceProductCategory {
             int productId = resultSet.getInt("productId");
             String productName = resultSet.getString("productName");
             String description = resultSet.getString("description");
+             byte[] image = resultSet.getBytes("image");
             double price = resultSet.getDouble("price");
 
-            Product product = new Product(productId, productName, description, price);
+             Product product = new Product( productName, description,image, price);
             products.add(product);
         }
     } catch (SQLException ex) {

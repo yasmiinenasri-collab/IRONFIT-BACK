@@ -6,67 +6,45 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLajouterMEDcontroler">
+<AnchorPane id="AnchorPane" prefHeight="408.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLajouterMEDcontroler">
    <children>
-      <ImageView fitHeight="412.0" fitWidth="607.0" layoutX="-6.0" layoutY="-6.0">
+      <ImageView fitHeight="408.0" fitWidth="542.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/test.jpg" />
+            <Image url="@../Image/test.jpg" />
          </image>
       </ImageView>
+      <VBox prefHeight="408.0" prefWidth="137.0" style="-fx-background-color: #ffffff;" />
       <AnchorPane prefHeight="406.0" prefWidth="151.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView layoutX="12.0" layoutY="10.0">
+            <ImageView fitWidth="123.0" layoutX="14.0" layoutY="14.0">
                <image>
                   <Image url="@../../../Ironfit.png" />
                </image>
             </ImageView>
-            <Label layoutX="42.0" layoutY="67.0" text="Nom Medecin">
+            <Text layoutX="12.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le premier bien est la santé" wrappingWidth="137.0">
                <font>
-                  <Font name="System Italic" size="14.0" />
+                  <Font name="System Bold Italic" size="36.0" />
                </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="108.0" text="Prenom Medecin">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="56.0" layoutY="147.0" text="Spécialité">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="63.0" layoutY="183.0" text="Adresse">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="71.0" layoutY="222.0" text="Email">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="79.0" layoutY="264.0" text="Tel">
-               <font>
-                  <Font name="System Italic" size="14.0" />
-               </font>
-            </Label>
+            </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="nommedecin" layoutX="195.0" layoutY="66.0" />
-      <TextField fx:id="prenommedecin" layoutX="195.0" layoutY="109.0" />
-      <TextField fx:id="specialitemedecin" layoutX="195.0" layoutY="146.0" />
-      <TextField fx:id="adressemedecin" layoutX="195.0" layoutY="178.0" />
-      <TextField fx:id="emailmedecin" layoutX="195.0" layoutY="219.0" />
-      <TextField fx:id="telmedecin" layoutX="195.0" layoutY="260.0" />
-      <Button fx:id="btnajoutermedecin" layoutX="480.0" layoutY="328.0" mnemonicParsing="false" text="Ajouter" />
-      <Text fill="#fcf7f7" layoutX="254.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter medecin">
+      <TextField fx:id="nommedecin" layoutX="246.0" layoutY="60.0" prefHeight="32.0" prefWidth="165.0" promptText="Nom Medecin" />
+      <TextField fx:id="prenommedecin" layoutX="246.0" layoutY="102.0" prefHeight="32.0" prefWidth="165.0" promptText="Prenom Medecin" />
+      <TextField fx:id="specialitemedecin" layoutX="246.0" layoutY="149.0" prefHeight="32.0" prefWidth="165.0" promptText="Spécialité" />
+      <TextField fx:id="adressemedecin" layoutX="246.0" layoutY="188.0" prefHeight="32.0" prefWidth="165.0" promptText="Adresse" />
+      <TextField fx:id="emailmedecin" layoutX="246.0" layoutY="234.0" prefHeight="32.0" prefWidth="165.0" promptText="Email" />
+      <TextField fx:id="telmedecin" layoutX="246.0" layoutY="281.0" prefHeight="32.0" prefWidth="165.0" promptText="Tel" />
+      <Button id="but1" fx:id="btnajoutermedecin" layoutX="360.0" layoutY="326.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Ajouter " />
+      <Text fill="#fcf7f7" layoutX="238.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter medecin">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Text>
-      <Label fx:id="label" layoutX="195.0" layoutY="299.0" text="Label" />
+      <Label fx:id="label" layoutX="195.0" layoutY="377.0" text="Label" />
+      <Button id="but1" fx:id="btn_retour_ajout" layoutX="195.0" layoutY="326.0" mnemonicParsing="false" onAction="#btn_retour_ajouter_med" prefHeight="32.0" prefWidth="102.0" stylesheets="@../Style/Style.css" text="Retour " />
    </children>
 </AnchorPane>
