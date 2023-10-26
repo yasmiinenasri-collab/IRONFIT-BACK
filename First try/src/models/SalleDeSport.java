@@ -19,6 +19,11 @@ public class SalleDeSport {
     public SalleDeSport() {
     }
 
+    public SalleDeSport(String nom) {
+        this.nom = nom;
+    }
+    
+
     public SalleDeSport(int id, String nom, String adresse, String capacite, String specialite) {
         this.idSalleDeSport = id;
         this.nom = nom;

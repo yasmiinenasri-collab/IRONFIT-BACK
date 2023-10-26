@@ -37,8 +37,8 @@ public class JavaFX_Test extends Application {
            //Parent root = FXMLLoader.load(getClass().getResource("FXMLAfficheAbonnement.fxml"));
            // Parent root = FXMLLoader.load(getClass().getResource("FXMLModifierAbonnement.fxml"));
            // Parent root = FXMLLoader.load(getClass().getResource("FXMLSupprimerAbonnement.fxml"));
-           Parent root = FXMLLoader.load(getClass().getResource("FXMLTest.fxml"));
-    //       Parent root = FXMLLoader.load(getClass().getResource("FXMLBarChartTaux.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
+        //  Parent root = FXMLLoader.load(getClass().getResource("FXMLBarChartTaux.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

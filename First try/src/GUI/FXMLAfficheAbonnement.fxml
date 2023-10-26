@@ -7,68 +7,81 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="743.0" style="-fx-background-image: #8C999B;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAfficheAbonnementController">
+<AnchorPane id="AnchorPane" prefHeight="488.0" prefWidth="910.0" style="-fx-background-image: #8C999B;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAfficheAbonnementController">
    <children>
-      <ListView fx:id="listViewAbonnements" prefHeight="352.0" prefWidth="606.0" />
-      <VBox layoutX="606.0" prefHeight="402.0" prefWidth="137.0" style="-fx-background-color: #8C999B;">
+      <ImageView fitHeight="488.0" fitWidth="885.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/5.PNG" />
+         </image>
+      </ImageView>
+      <ListView fx:id="listViewAbonnements" layoutX="47.0" layoutY="68.0" prefHeight="352.0" prefWidth="626.0" />
+      <Label fx:id="statistiqueLabel" layoutX="316.0" layoutY="417.0" prefHeight="59.0" prefWidth="357.0" text="Nombre total des Abonnements : 0" textFill="#ff1c1c">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Button id="dark" fx:id="btnretourtest" layoutY="425.0" mnemonicParsing="false" onAction="#retourAction1200" prefHeight="50.0" prefWidth="138.0" stylesheets="@../Style/style.css" text="Retour">
+         <font>
+            <Font name="System Italic" size="21.0" />
+         </font>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="1.0" green="0.10000000149011612" blue="0.10000000149011612" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <VBox layoutX="736.0" layoutY="1.0" prefHeight="488.0" prefWidth="174.0" style="-fx-background-color: WHITE;">
          <children>
-            <ImageView fitHeight="134.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Capture1.PNG" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnGOAJOUTAB" mnemonicParsing="false" onAction="#retourAction16" prefHeight="50.0" prefWidth="138.0" text="Ajouter">
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color green="1.0" blue="0.06666667014360428" />
-                     </color>
-                  </InnerShadow>
-               </effect></Button>
-            <Button fx:id="btnGOMODIFAB" mnemonicParsing="false" onAction="#retourAction15" prefHeight="45.0" prefWidth="138.0" text="Modifier">
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.24429012835025787" green="0.23148147761821747" blue="1.0" />
-                     </color>
-                  </InnerShadow>
-               </effect></Button>
-            <Button fx:id="btnGOSUPPRIMAB" mnemonicParsing="false" onAction="#supprimerAbonnement" prefHeight="46.0" prefWidth="143.0" text="Supprimer">
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </InnerShadow>
-               </effect></Button>
+            <AnchorPane prefHeight="482.0" prefWidth="174.0">
+               <children>
+                  <ImageView fitHeight="119.0" fitWidth="123.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/LOGO.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button id="dark" fx:id="btnGOAJOUTAB" layoutX="18.0" layoutY="164.0" mnemonicParsing="false" onAction="#retourAction16" prefHeight="50.0" prefWidth="138.0" stylesheets="@../Style/style.css" text="Ajouter">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color green="1.0" blue="0.06666667014360428" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="dark" fx:id="btnGOMODIFAB" layoutX="19.0" layoutY="234.0" mnemonicParsing="false" onAction="#retourAction15" prefHeight="50.0" prefWidth="138.0" stylesheets="@../Style/style.css" text="Modifier">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.24429012835025787" green="0.23148147761821747" blue="1.0" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="dark" fx:id="btnGOSUPPRIMAB" layoutX="18.0" layoutY="302.0" mnemonicParsing="false" onAction="#supprimerAbonnement" prefHeight="50.0" prefWidth="138.0" stylesheets="@../Style/style.css" text="Supprimer">
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="blue" fx:id="excel" layoutX="18.0" layoutY="383.0" mnemonicParsing="false" onAction="#btnexcel" prefHeight="50.0" prefWidth="138.0" stylesheets="@../Style/style.css" text="Excel" />
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
-      <HBox layoutX="-2.0" layoutY="347.0" prefHeight="56.0" prefWidth="743.0" style="-fx-background-color: #8C999B;">
-         <children>
-            <Button fx:id="btnretourtest" mnemonicParsing="false" onAction="#retourAction1200" prefHeight="54.0" prefWidth="103.0" text="Retour">
-               <font>
-                  <Font name="System Italic" size="21.0" />
-               </font>
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="1.0" green="0.10000000149011612" blue="0.10000000149011612" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-            <Label prefHeight="17.0" prefWidth="155.0" text=" " />
-            <Label fx:id="statistiqueLabel" prefHeight="59.0" prefWidth="357.0" text="Nombre total des Abonnements : 0">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <Text fill="WHITE" layoutX="176.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion d'abonnement" wrappingWidth="367.4254608154297">
+         <font>
+            <Font name="System Bold Italic" size="32.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

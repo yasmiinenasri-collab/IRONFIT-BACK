@@ -12,14 +12,17 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import models.SalleDeSport;
-import services.ServicesSalleDeSport;
+import Services.ServicesSalleDeSport;
 
 public class FXMLGetOneSalleDeSportController implements Initializable {
     @FXML
-    private ComboBox<String> nomSalleDeSport; // ComboBox pour afficher les noms de salle de sport
+    private ComboBox<String> rechercheParComboBox; // ComboBox pour choisir la méthode de recherche
+    @FXML
+    private TextField critereTextField; // Champ de texte pour saisir les critères de recherche
     @FXML
     private Button btnGetOneSS;
     @FXML
@@ -39,28 +42,44 @@ public class FXMLGetOneSalleDeSportController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ServicesSalleDeSport ss = new ServicesSalleDeSport();
-        nomSalleDeSport.getItems().addAll(ss.getAllSalleDeSportNames());
+        // Ajoutez les options pour le ComboBox de méthode de recherche
+        rechercheParComboBox.getItems().addAll("Par nom", "Par adresse", "Par capacité", "Par spécialité");
 
         btnGetOneSS.setOnAction(event -> {
-            String nom = nomSalleDeSport.getValue(); // Récupérer le nom sélectionné dans le ComboBox
+            String methodeRecherche = rechercheParComboBox.getValue(); // Récupérer la méthode de recherche sélectionnée
+            String critere = critereTextField.getText(); // Récupérer les critères de recherche saisis
 
-            if (nom != null && !nom.isEmpty()) {
-                // Recherchez la salle de sport par nom
+            if (methodeRecherche != null && !methodeRecherche.isEmpty() && critere != null && !critere.isEmpty()) {
+                // Effectuer la recherche en fonction de la méthode choisie
                 ServicesSalleDeSport serviceSalleDeSport = new ServicesSalleDeSport();
-                SalleDeSport salleExistante = serviceSalleDeSport.getOneSalleDeSportByNom(nom);
+                SalleDeSport salleExistante = null;
+
+                switch (methodeRecherche) {
+                    case "Par nom":
+                        salleExistante = serviceSalleDeSport.getOneSalleDeSportByNom(critere);
+                        break;
+                    case "Par adresse":
+                        salleExistante = serviceSalleDeSport.getOneSalleDeSportByAdresse(critere);
+                        break;
+                    case "Par capacité":
+                        salleExistante = serviceSalleDeSport.getOneSalleDeSportByCapacite(critere);
+                        break;
+                    case "Par spécialité":
+                        salleExistante = serviceSalleDeSport.getOneSalleDeSportBySpecialite(critere);
+                        break;
+                }
 
                 if (salleExistante != null) {
                     // Affichez les détails de la salle de sport
                     resultText.setText("Nom: " + salleExistante.getNom() + "\n"
-                        + "Adresse: " + salleExistante.getAdresse() + "\n"
-                        + "Capacité: " + salleExistante.getCapacite() + "\n"
-                        + "Spécialité: " + salleExistante.getSpecialite());
+                            + "Adresse: " + salleExistante.getAdresse() + "\n"
+                            + "Capacité: " + salleExistante.getCapacite() + "\n"
+                            + "Spécialité: " + salleExistante.getSpecialite());
                 } else {
-                    afficherAlerte("Salle de sport non trouvée", "Aucune salle de sport trouvée avec ce nom.");
+                    afficherAlerte("Salle de sport non trouvée", "Aucune salle de sport trouvée avec ces critères.");
                 }
             } else {
-                afficherAlerte("Champ vide", "Veuillez sélectionner un nom de salle de sport.");
+                afficherAlerte("Champs vides", "Veuillez sélectionner une méthode de recherche et saisir des critères.");
             }
         });
     }

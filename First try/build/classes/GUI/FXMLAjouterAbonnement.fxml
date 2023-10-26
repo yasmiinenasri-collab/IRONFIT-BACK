@@ -13,45 +13,16 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="salleDeSportComboBox" prefHeight="400.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAjouterAbonnementController">
+<AnchorPane id="AnchorPane" fx:id="salleDeSportComboBox" prefHeight="591.0" prefWidth="689.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAjouterAbonnementController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="152.0" style="-fx-background-color: #8C999B;">
-         <children>
-            <ImageView fitHeight="142.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Capture1.PNG" />
-               </image>
-            </ImageView>
-            <Label text="Nom de salle de sport">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="45.0" prefWidth="152.0" text="   Type:">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="46.0" prefWidth="152.0" text="   DateDebut:">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="29.0" prefWidth="152.0" text="   DateFin:">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="41.0" prefWidth="152.0" text="   Prix:">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <TextField fx:id="type" layoutX="178.0" layoutY="168.0" />
-      <TextField fx:id="prix" layoutX="178.0" layoutY="295.0" />
-      <Button fx:id="btnajouterab" layoutX="309.0" layoutY="344.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="104.0" text="Ajouter">
+      <ImageView fitHeight="601.0" fitWidth="713.0" layoutX="-17.0" layoutY="-4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/1.PNG" />
+         </image>
+      </ImageView>
+      <TextField fx:id="type" layoutX="308.0" layoutY="219.0" prefHeight="26.0" prefWidth="174.0" />
+      <TextField fx:id="prix" layoutX="308.0" layoutY="341.0" prefHeight="26.0" prefWidth="174.0" />
+      <Button id="but" fx:id="btnajouterab" layoutX="525.0" layoutY="463.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="112.0" stylesheets="@../Style/style.css" text="Ajouter">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
@@ -63,7 +34,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button fx:id="boutonRetour" layoutX="171.0" layoutY="344.0" mnemonicParsing="false" onAction="#retourAction13" prefHeight="41.0" prefWidth="104.0" text="Retour">
+      <Button id="but1" fx:id="boutonRetour" layoutX="347.0" layoutY="463.0" mnemonicParsing="false" onAction="#retourAction13" prefHeight="50.0" prefWidth="112.0" stylesheets="@../Style/style.css" text="Retour">
     <font>
         <Font name="System Italic" size="16.0" />
     </font>
@@ -75,18 +46,52 @@
             </InnerShadow>
          </effect>
 </Button>
-      <VBox layoutX="152.0" layoutY="-1.0" prefHeight="122.0" prefWidth="269.0" style="-fx-background-color: #8C999B;">
+      <ComboBox fx:id="salleDeSportCombo" layoutX="308.0" layoutY="177.0" prefHeight="28.0" prefWidth="174.0" />
+      <DatePicker fx:id="datePickerDebut" layoutX="308.0" layoutY="299.0" prefHeight="26.0" prefWidth="174.0" />
+      <DatePicker fx:id="datePickerFin" layoutX="308.0" layoutY="262.0" prefHeight="26.0" prefWidth="174.0" />
+      <Label layoutX="248.0" layoutY="44.0" prefHeight="50.0" prefWidth="409.0" text="   Ajouter Abonnement" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <VBox layoutX="-3.0" prefHeight="595.0" prefWidth="200.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="119.0" fitWidth="270.0" pickOnBounds="true" smooth="false">
-               <image>
-                  <Image url="@../images/Capture.PNG" />
-               </image>
-            </ImageView>
+            <AnchorPane fx:id="side_ankerpane" prefHeight="595.0" prefWidth="200.0" styleClass="side_ankerpane">
+               <children>
+                  <Label layoutY="168.0" prefHeight="46.0" prefWidth="217.0" text="     Nom de salle de sport:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="-1.0" layoutY="214.0" prefHeight="37.0" prefWidth="217.0" text="                    Type:">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="-1.0" layoutY="251.0" prefHeight="46.0" prefWidth="217.0" text="               DateDebut:">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="8.0" layoutY="297.0" prefHeight="29.0" prefWidth="217.0" text="               DateFin:">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="5.0" layoutY="328.0" prefHeight="41.0" prefWidth="217.0" text="                   Prix:">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="137.0" fitWidth="148.0" layoutX="39.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/LOGO.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
-      <ComboBox fx:id="salleDeSportCombo" layoutX="178.0" layoutY="134.0" prefHeight="28.0" prefWidth="163.0" />
-      <DatePicker fx:id="datePickerDebut" layoutX="176.0" layoutY="207.0" prefHeight="26.0" prefWidth="163.0" />
-      <DatePicker fx:id="datePickerFin" layoutX="176.0" layoutY="251.0" prefHeight="26.0" prefWidth="163.0" />
 
    </children>
 </AnchorPane>

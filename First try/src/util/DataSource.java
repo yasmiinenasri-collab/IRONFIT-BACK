@@ -9,39 +9,43 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  *
- * @author tlili
+ * @author ANIS
  */
 public class DataSource {
-    private Connection cnx;
-    private static DataSource instance;
+    String url = "jdbc:mysql://localhost:3306/pidev4secrud";
+    String user = "root";
+    String pwd = "";
     
-    final String URL = "jdbc:mysql://localhost:3306/yassine";
-    final String USR = "root";
-    final String PWD = "";
     
-   
+    Connection con;
     
+    //3 
+    static DataSource instance;
+     //1 rendre le constructeur prive
     private DataSource() {
+        
         try {
-            cnx = DriverManager.getConnection(URL, USR, PWD);
-            System.out.println("Relation etablie avec succes!");
+            con = DriverManager.getConnection(url, user, pwd);
+            System.out.println("connexion etablie");
         } catch (SQLException ex) {
-             System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
+    }
+    
+    // 2 etape: de creer une methode static pour utiliser le const 
+    public static DataSource getinstance(){
+        if(instance == null){
+            instance =  new DataSource();
+        }
+        return instance;
         
     }
-    public static DataSource getInstance() {
-        if(instance == null)
-            instance = new DataSource();
-        return instance;
-    }
 
-    public Connection getConnection(){
-        return this.cnx;
+    public Connection getCon() {
+        return con;
     }
-
+    
+    
 }
-

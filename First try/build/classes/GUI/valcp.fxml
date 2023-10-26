@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXClippedPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="451.0" prefWidth="808.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="GUI.ValcpController">
+   <children>
+      <ImageView fitHeight="477.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/8.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="btn_barcoder" layoutX="274.0" layoutY="162.0" onAction="#lirecbAction" prefHeight="54.0" prefWidth="263.0" promptText="Entrer le chemin de votre code-barre " />
+      <Button id="but1" fx:id="bt_red" layoutX="421.0" layoutY="255.0" mnemonicParsing="false" onAction="#appredAction" stylesheets="@../Style/style.css" text="Appliquer réduction" />
+      <Label layoutX="307.0" layoutY="313.0" prefHeight="54.0" prefWidth="234.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXClippedPane />
+      <Button id="dark " fx:id="Rvalcp" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#Retour" prefHeight="48.0" prefWidth="106.0" stylesheets="@../Style/style.css" text="Retour " />
+      <Button id="but1" fx:id="btn_barcoder" layoutX="199.0" layoutY="255.0" mnemonicParsing="false" onAction="#lirecbAction" stylesheets="@../Style/style.css" text="Lire le code à barre " />
+      <Label fx:id="lb_cp" layoutX="199.0" layoutY="340.0" prefHeight="48.0" prefWidth="181.0" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

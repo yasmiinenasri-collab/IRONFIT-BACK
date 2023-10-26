@@ -7,87 +7,90 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="408.0" prefWidth="975.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAfficheSalleDeSportController">
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAfficheSalleDeSportController">
    <children>
-      <ListView fx:id="listViewSalleDeSport" prefHeight="358.0" prefWidth="598.0" />
-      <VBox layoutX="597.0" prefHeight="407.0" prefWidth="132.0" style="-fx-background-color: #8C999B;">
+      <ImageView fitHeight="506.0" fitWidth="939.0" layoutY="-2.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/1.PNG" />
+         </image>
+      </ImageView>
+      <ListView fx:id="listViewSalleDeSport" layoutX="53.0" layoutY="30.0" prefHeight="372.0" prefWidth="703.0" />
+      <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="200.0" layoutX="739.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="statistiqueLabel" layoutX="330.0" layoutY="419.0" prefHeight="57.0" prefWidth="348.0" text="Nombre total de salles de sport : 0" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <Button id="dark" fx:id="btnretourtest" layoutX="7.0" layoutY="420.0" mnemonicParsing="false" onAction="#retourAction42" prefHeight="54.0" prefWidth="132.0" stylesheets="@../Style/style.css" text="Retour">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.3684210479259491" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
+      <VBox layoutX="780.0" prefHeight="506.0" prefWidth="172.0" style="-fx-background-color: WHITE;">
          <children>
-            <ImageView fitHeight="129.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Capture1.PNG" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnGOAJOUT" mnemonicParsing="false" onAction="#retourAction1" prefHeight="54.0" prefWidth="134.0" text="Ajouter">
-               <font>
-                  <Font name="System Italic" size="23.0" />
-               </font>
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.11625730991363525" green="0.7473683953285217" blue="0.15833137929439545" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-            <Button fx:id="btnGOMODIF" mnemonicParsing="false" onAction="#retourAction" prefHeight="50.0" prefWidth="132.0" text="Modifer">
-               <font>
-                  <Font name="System Italic" size="22.0" />
-               </font>
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.23119999468326569" green="0.616780698299408" blue="0.6800000071525574" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-            <Button fx:id="btnGOSUPPRIM" mnemonicParsing="false" onAction="#supprimerSalleDeSport" prefHeight="54.0" prefWidth="132.0" text="Supprimer">
-               <font>
-                  <Font name="System Italic" size="19.0" />
-               </font>
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.8421052694320679" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-            <Button fx:id="btnGOSEARCH" mnemonicParsing="false" onAction="#retourAction3" prefHeight="58.0" prefWidth="140.0" text="Rechercher">
-               <font>
-                  <Font name="System Italic" size="20.0" />
-               </font>
-               <effect>
-                  <InnerShadow />
-               </effect>
-            </Button>
+            <AnchorPane prefHeight="498.0" prefWidth="172.0">
+               <children>
+                  <ImageView fitHeight="122.0" fitWidth="132.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/LOGO.PNG" />
+                     </image>
+                  </ImageView>
+                  <Button id="dark" fx:id="btnGOAJOUT" layoutX="19.0" layoutY="161.0" mnemonicParsing="false" onAction="#retourAction1" prefHeight="54.0" prefWidth="134.0" stylesheets="@../Style/style.css" text="Ajouter">
+                     <font>
+                        <Font name="System Italic" size="23.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.11625730991363525" green="0.7473683953285217" blue="0.15833137929439545" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="dark" fx:id="btnGOMODIF" layoutX="20.0" layoutY="223.0" mnemonicParsing="false" onAction="#retourAction" prefHeight="54.0" prefWidth="134.0" stylesheets="@../Style/style.css" text="Modifer">
+                     <font>
+                        <Font name="System Italic" size="22.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.23119999468326569" green="0.616780698299408" blue="0.6800000071525574" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="dark" fx:id="btnGOSUPPRIM" layoutX="20.0" layoutY="284.0" mnemonicParsing="false" onAction="#supprimerSalleDeSport" prefHeight="54.0" prefWidth="132.0" stylesheets="@../Style/style.css" text="Supprimer">
+                     <font>
+                        <Font name="System Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow>
+                           <color>
+                              <Color red="0.8421052694320679" />
+                           </color>
+                        </InnerShadow>
+                     </effect>
+                  </Button>
+                  <Button id="dark" fx:id="btnGOSEARCH" layoutX="20.0" layoutY="347.0" mnemonicParsing="false" onAction="#retourAction3" prefHeight="54.0" prefWidth="132.0" stylesheets="@../Style/style.css" text="Rechercher">
+                     <font>
+                        <Font name="System Italic" size="20.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Button>
+                  <Button id="blue" fx:id="excel" layoutX="20.0" layoutY="437.0" mnemonicParsing="false" onAction="#btnexcel" prefHeight="54.0" prefWidth="134.0" stylesheets="@../Style/style.css" text="Excel" />
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
-      <HBox layoutY="354.0" prefHeight="54.0" prefWidth="729.0" style="-fx-background-color: #8C999B;">
-         <children>
-            <Button fx:id="btnretourtest" mnemonicParsing="false" onAction="#retourAction42" prefHeight="56.0" prefWidth="92.0" text="Retour">
-               <effect>
-                  <InnerShadow>
-                     <color>
-                        <Color red="0.3684210479259491" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Button>
-            <Label prefHeight="51.0" prefWidth="119.0" text=" " />
-            <Label fx:id="statistiqueLabel" prefHeight="57.0" prefWidth="348.0" text="Nombre total de salles de sport : 0">
-               <font>
-                  <Font name="System Bold Italic" size="19.0" />
-               </font>
-            </Label>
-            <Button fx:id="excel" mnemonicParsing="false" onAction="#btnexcel" prefHeight="51.0" prefWidth="160.0" text="Excel" />
-         </children>
-      </HBox>
-      <ImageView fx:id="qrCodeImageView" fitHeight="150.0" fitWidth="200.0" layoutX="739.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

@@ -14,8 +14,13 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import models.SalleDeSport;
-import services.ServicesAbonnement;
-import services.ServicesSalleDeSport;
+import Services.ServicesAbonnement;
+import Services.ServicesSalleDeSport;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -30,6 +35,8 @@ public class FXMLBarCharTauxController implements Initializable {
     private NumberAxis NumberAxis;
     @FXML
     private CategoryAxis CategoryAxis;
+    @FXML
+    private Button retouruserr;
 
     /**
      * Initializes the controller class.
@@ -55,5 +62,15 @@ public class FXMLBarCharTauxController implements Initializable {
         // Ajoutez la série de données au graphique
         barcharts.getData().add(series);
     }   
+
+    @FXML
+    private void btnhomusr(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("HomeUser.fxml"));
+            retouruserr.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
 }

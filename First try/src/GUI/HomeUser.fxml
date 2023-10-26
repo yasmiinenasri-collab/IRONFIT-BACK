@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="631.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeUserController">
+   <children>
+      <ImageView fitHeight="635.0" fitWidth="1031.0" layoutX="-1.0" layoutY="-4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/2.PNG" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="100.0" prefWidth="1031.0" style="-fx-background-color: WHITE;">
+         <children>
+            <ImageView fx:id="profile_btn" fitHeight="80.0" fitWidth="102.0" layoutX="741.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="100.0" fitWidth="111.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../images/LOGO.PNG" />
+               </image>
+            </ImageView>
+            <Button id="dark" layoutX="186.0" layoutY="34.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="141.0" stylesheets="@../Style/style.css" text="Produits" />
+            <Button id="dark" fx:id="gestion_abonnement" layoutX="335.0" layoutY="34.0" mnemonicParsing="false" onAction="#btngestionabn" prefHeight="53.0" prefWidth="154.0" stylesheets="@../Style/style.css" text="Abonnement" />
+            <Button id="dark" layoutX="497.0" layoutY="34.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="128.0" stylesheets="@../Style/style.css" text="Forum" />
+            <Button id="dark" fx:id="dc_btn" layoutX="858.0" layoutY="28.0" mnemonicParsing="false" onAction="#Se_deconnecter" prefHeight="53.0" prefWidth="147.0" stylesheets="@../Style/style.css" text="Déconnecter" />
+         </children>
+      </AnchorPane>
+      <Button id="but1" fx:id="bar" layoutX="265.0" layoutY="150.0" mnemonicParsing="false" onAction="#btnbarcharttt" prefHeight="53.0" prefWidth="471.0" stylesheets="@../Style/style.css" text="Taux d'abonnement dans chaque salle de sport" />
+      <Button id="but1" fx:id="sexe" layoutX="265.0" layoutY="226.0" mnemonicParsing="false" onAction="#btnrepsexe" prefHeight="53.0" prefWidth="471.0" stylesheets="@../Style/style.css" text="Repartition par sexe" />
+      <Button id="but1" fx:id="gonbre" layoutX="265.0" layoutY="303.0" mnemonicParsing="false" onAction="#btngonbre" prefHeight="53.0" prefWidth="471.0" stylesheets="@../Style/style.css" text="Ils nous ont fait Confiance !" />
+   </children>
+</AnchorPane>

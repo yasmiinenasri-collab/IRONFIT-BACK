@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package Services;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ public class ServicesSalleDeSport implements IServiceSalleDeSport<SalleDeSport> 
     
 
     public ServicesSalleDeSport() {
-        this.cnx= DataSource.getInstance().getConnection();
+         this.cnx= DataSource.getinstance().getCon();
     }
 
   
@@ -46,49 +46,143 @@ public void ajouterSalleDeSport(SalleDeSport ss) {
         System.out.println(ex.getMessage());
     }
 }
-// Dans la classe ServicesSalleDeSport
 public SalleDeSport getOneSalleDeSportByNom(String nom) {
-    Connection connection = DataSource.getInstance().getConnection();
-    PreparedStatement preparedStatement = null;
-    ResultSet resultSet = null;
-    SalleDeSport salleDeSport = null;
+    Connection connection = DataSource.getinstance().getCon();
 
-    try {
-        String query = "SELECT * FROM `Salledesport` WHERE nom = ?";
-        preparedStatement = connection.prepareStatement(query);
+    String query = "SELECT * FROM salledesport WHERE nom = ?";
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
         preparedStatement.setString(1, nom);
-        resultSet = preparedStatement.executeQuery();
 
-        if (resultSet.next()) {
-            salleDeSport = new SalleDeSport();
-            salleDeSport.setId(resultSet.getInt("idSalleDeSport"));
-            salleDeSport.setNom(resultSet.getString("nom"));
-            salleDeSport.setAdresse(resultSet.getString("adresse"));
-            salleDeSport.setCapacite(resultSet.getString("capacite"));
-            salleDeSport.setSpecialite(resultSet.getString("specialite"));
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                SalleDeSport salleDeSport = new SalleDeSport();
+                salleDeSport.setId(resultSet.getInt("idSalleDeSport")); // Assurez-vous que la colonne "idSalleDeSport" existe dans votre base de données
+                salleDeSport.setNom(resultSet.getString("nom"));
+                salleDeSport.setAdresse(resultSet.getString("adresse"));
+                salleDeSport.setCapacite(resultSet.getString("capacite"));
+                salleDeSport.setSpecialite(resultSet.getString("specialite"));
+
+                return salleDeSport;
+            }
         }
     } catch (SQLException e) {
         e.printStackTrace();
-    } finally {
-        // Fermez les ressources (ResultSet, PreparedStatement, Connection)
-        if (resultSet != null) {
-            try {
-                resultSet.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (preparedStatement != null) {
-            try {
-                preparedStatement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        // Gérez les erreurs de base de données ici
     }
 
-    return salleDeSport;
+    return null; // Retournez null si la salle de sport n'est pas trouvée
 }
+public SalleDeSport getOneSalleDeSportByAdresse(String adresse) {
+    Connection connection = DataSource.getinstance().getCon();
+
+    String query = "SELECT * FROM salledesport WHERE adresse = ?";
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        preparedStatement.setString(1, adresse);
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                SalleDeSport salleDeSport = new SalleDeSport();
+                salleDeSport.setId(resultSet.getInt("idSalleDeSport")); // Assurez-vous que la colonne "idSalleDeSport" existe dans votre base de données
+                salleDeSport.setNom(resultSet.getString("nom"));
+                salleDeSport.setAdresse(resultSet.getString("adresse"));
+                salleDeSport.setCapacite(resultSet.getString("capacite"));
+                salleDeSport.setSpecialite(resultSet.getString("specialite"));
+
+                return salleDeSport;
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Gérez les erreurs de base de données ici
+    }
+
+    return null; // Retournez null si la salle de sport n'est pas trouvée
+}
+public SalleDeSport getOneSalleDeSportByCapacite(String capacite) {
+    Connection connection = DataSource.getinstance().getCon();
+
+    String query = "SELECT * FROM salledesport WHERE capacite = ?";
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        preparedStatement.setString(1, capacite);
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                SalleDeSport salleDeSport = new SalleDeSport();
+                salleDeSport.setId(resultSet.getInt("idSalleDeSport")); // Assurez-vous que la colonne "idSalleDeSport" existe dans votre base de données
+                salleDeSport.setNom(resultSet.getString("nom"));
+                salleDeSport.setAdresse(resultSet.getString("adresse"));
+                salleDeSport.setCapacite(resultSet.getString("capacite"));
+                salleDeSport.setSpecialite(resultSet.getString("specialite"));
+
+                return salleDeSport;
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Gérez les erreurs de base de données ici
+    }
+
+    return null; // Retournez null si la salle de sport n'est pas trouvée
+}
+public SalleDeSport getOneSalleDeSportBySpecialite(String specialite) {
+    Connection connection = DataSource.getinstance().getCon();
+
+    String query = "SELECT * FROM salledesport WHERE specialite = ?";
+
+    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        preparedStatement.setString(1, specialite);
+
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                SalleDeSport salleDeSport = new SalleDeSport();
+                salleDeSport.setId(resultSet.getInt("idSalleDeSport")); // Assurez-vous que la colonne "idSalleDeSport" existe dans votre base de données
+                salleDeSport.setNom(resultSet.getString("nom"));
+                salleDeSport.setAdresse(resultSet.getString("adresse"));
+                salleDeSport.setCapacite(resultSet.getString("capacite"));
+                salleDeSport.setSpecialite(resultSet.getString("specialite"));
+
+                return salleDeSport;
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        // Gérez les erreurs de base de données ici
+    }
+
+    return null; // Retournez null si la salle de sport n'est pas trouvée
+}
+
+
+public SalleDeSport getOneSalleDeSportByID(int id) {
+     Connection connection = DataSource.getinstance().getCon();
+
+        String query = "SELECT * FROM salledesport WHERE id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    SalleDeSport salleDeSport = new SalleDeSport();
+                    salleDeSport.setId(resultSet.getInt("id"));
+                    salleDeSport.setNom(resultSet.getString("nom"));
+                    salleDeSport.setAdresse(resultSet.getString("adresse"));
+                    salleDeSport.setCapacite(resultSet.getString("capacite"));
+                    salleDeSport.setSpecialite(resultSet.getString("specialite"));
+
+                    return salleDeSport;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérez les erreurs de base de données ici
+        }
+
+        return null; // Retournez null si la salle de sport n'est pas trouvée
+    }
 
 
  
@@ -132,8 +226,8 @@ public void modifierSalleDeSport(SalleDeSport ss) {
         List<String> noms = new ArrayList<>();
 
        
-        DataSource ds = DataSource.getInstance();
-        try (Connection conn = ds.getConnection()) {
+        DataSource ds = DataSource.getinstance();
+        try (Connection conn = ds.getCon()) {
             String query = "SELECT nom FROM `Salledesport`";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -165,7 +259,7 @@ public void modifierSalleDeSport(SalleDeSport ss) {
        
     
      public void supprimerSalleDeSport(String nom, String adresse) {
-    Connection connection = DataSource.getInstance().getConnection();
+    Connection connection = DataSource.getinstance().getCon();
     PreparedStatement preparedStatement = null;
 
     try {
@@ -193,7 +287,7 @@ public void modifierSalleDeSport(SalleDeSport ss) {
         }
     }
 }
-
+    
 
     @Override
     public SalleDeSport getOneSalleDeSport(SalleDeSport ss) {
@@ -293,30 +387,7 @@ public void modifierSalleDeSport(SalleDeSport ss) {
 
         return id;
     }
-    
-       /*
-       public int getNombreParticipants(int id) {
-    int nombreParticipants = 0;
-
-    // Requête SQL pour compter le nombre de participants pour un événement donné
-    String req = "SELECT COUNT(*) FROM participant WHERE idevent = ?";
-
-    try {
-        PreparedStatement pre = cnx.prepareStatement(req);
-        pre.setInt(1, id);
-
-        ResultSet rs = pre.executeQuery();
-        if (rs.next()) {
-            nombreParticipants = rs.getInt(1);
-        }
-    } catch (SQLException ex) {
-        System.out.println("Erreur lors de la récupération du nombre de participants : " + ex.getMessage());
-    }
-
-    return nombreParticipants;
-       */
      
-       
        public List<Integer> getAllSalleDeSportIds() {
     List<Integer> ids = new ArrayList<>();
     String requete = "SELECT `idSalleDeSport` FROM `Salledesport`";

@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import models.SalleDeSport;
-import services.ServicesSalleDeSport;
+import Services.ServicesSalleDeSport;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
@@ -74,7 +74,7 @@ public class FXMLAfficheSalleDeSportController implements Initializable {
     @FXML
     private void retourAction42(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLTest.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("HomeAdmin.fxml"));
             btnretourtest.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();

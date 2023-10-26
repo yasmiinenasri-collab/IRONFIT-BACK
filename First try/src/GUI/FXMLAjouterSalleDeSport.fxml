@@ -11,13 +11,18 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAjouterSalleDeSportController">
+<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLAjouterSalleDeSportController">
    <children>
-      <TextField fx:id="nom" layoutX="166.0" layoutY="116.0" />
-      <TextField fx:id="adresse" layoutX="166.0" layoutY="152.0" />
-      <TextField fx:id="specialite" layoutX="166.0" layoutY="224.0" />
-      <TextField fx:id="capacite" layoutX="166.0" layoutY="184.0" />
-      <Button fx:id="btnAjouterSS" layoutX="282.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="85.0" text="Ajouter">
+      <ImageView fitHeight="484.0" fitWidth="425.0" layoutX="153.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/2.PNG" />
+         </image>
+      </ImageView>
+      <TextField fx:id="nom" layoutX="235.0" layoutY="173.0" />
+      <TextField fx:id="adresse" layoutX="235.0" layoutY="217.0" />
+      <TextField fx:id="specialite" layoutX="235.0" layoutY="300.0" />
+      <TextField fx:id="capacite" layoutX="235.0" layoutY="259.0" />
+      <Button id="but" fx:id="btnAjouterSS" layoutX="417.0" layoutY="381.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="95.0" stylesheets="@../Style/style.css" text="Ajouter">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
@@ -28,36 +33,40 @@
                </color>
             </InnerShadow>
          </effect></Button>
-      <VBox prefHeight="434.0" prefWidth="157.0" style="-fx-background-color: #8C999B;">
+      <VBox prefHeight="484.0" prefWidth="182.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fitHeight="107.0" fitWidth="133.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../images/Capture1.PNG" />
-               </image>
-            </ImageView>
-            <Label prefHeight="43.0" prefWidth="133.0" text="   Nom : ">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="38.0" prefWidth="133.0" text="   Adresse :">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="33.0" prefWidth="133.0" text="   Capacite :">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label prefHeight="42.0" prefWidth="133.0" text="   Specialite : ">
-               <font>
-                  <Font name="System Bold Italic" size="16.0" />
-               </font>
-            </Label>
+            <AnchorPane prefHeight="484.0" prefWidth="203.0">
+               <children>
+                  <Label layoutY="284.0" prefHeight="42.0" prefWidth="157.0" text="   Specialite : ">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="251.0" prefHeight="33.0" prefWidth="157.0" text="   Capacite :">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="204.0" prefHeight="38.0" prefWidth="157.0" text="   Adresse :">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="161.0" prefHeight="43.0" prefWidth="157.0" text="   Nom : ">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="121.0" fitWidth="124.0" layoutX="29.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/LOGO.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
-       <Button fx:id="boutonRetourSS" layoutX="175.0" layoutY="316.0" mnemonicParsing="false" onAction="#retourAction" prefHeight="37.0" prefWidth="85.0" text="Retour">
+       <Button id="but1" fx:id="boutonRetourSS" layoutX="262.0" layoutY="381.0" mnemonicParsing="false" onAction="#retourAction" prefHeight="51.0" prefWidth="95.0" stylesheets="@../Style/style.css" text="Retour">
     <font>
         <Font name="System Italic" size="16.0" />
     </font>
@@ -69,10 +78,5 @@
             </InnerShadow>
          </effect>
 </Button>
-      <ImageView fitHeight="107.0" fitWidth="281.0" layoutX="155.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/Capture.PNG" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

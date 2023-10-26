@@ -1,27 +1,25 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package tn.esprit.entite;
-
-import java.time.LocalDate;
+package models;
 
 /**
  *
  * @author nasri
  */
-public class CodePromo {
-    private int id_codepromo;
-    private Long code;
+public class CodePromo { private int id_codepromo;
+    private String code;
     private String description;
     private String datedexpiration;
     private String used ;
-    private Utilisateur utilisateur;
+    private User user;
 
     public CodePromo() {
     }
 
-    public CodePromo(int id_codepromo, Long code, String description,String datedexpiration, String used) {
+    public CodePromo(int id_codepromo, String code, String description,String datedexpiration, String used ) {
         this.id_codepromo = id_codepromo;
         this.code = code;
         this.description = description;
@@ -29,11 +27,25 @@ public class CodePromo {
         this.used = used;
     }
 
-    public CodePromo(Long code, String description, String datedexpiration, String used) {
+    public String getDatedexpiration() {
+        return datedexpiration;
+    }
+
+    public void setDatedexpiration(String datedexpiration) {
+        this.datedexpiration = datedexpiration;
+    }
+
+    public CodePromo(String code, String description, String datedexpiration, String used) {
         this.code = code;
         this.description = description;
         this.datedexpiration = datedexpiration;
         this.used = used;
+    }
+
+    public CodePromo(String code, String description, String dateExpiration) {
+        this.code = code;
+        this.description = description;
+       
     }
 
     public int getId_codepromo() {
@@ -44,11 +56,11 @@ public class CodePromo {
         this.id_codepromo = id_codepromo;
     }
 
-    public Long getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Long code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
@@ -58,14 +70,6 @@ public class CodePromo {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getDatedexpiration() {
-        return datedexpiration;
-    }
-
-    public void setDatedexpiration(String datedexpiration) {
-        this.datedexpiration = datedexpiration;
     }
 
     public String isUsed() {
@@ -78,7 +82,7 @@ public class CodePromo {
 
     @Override
     public String toString() {
-        return "CodePromo{" + "id_codepromo=" + id_codepromo + ", code=" + code + ", description=" + description + ", datedexpiration=" + datedexpiration + ", used=" + used + '}';
+        return "CodePromo{" + "id_codepromo=" + id_codepromo + ", code=" + code + ", description=" + description +   ", Date d'expiration="+datedexpiration +", used=" + used + '}';
     }
 
     @Override
@@ -103,6 +107,4 @@ public class CodePromo {
         return this.id_codepromo == other.id_codepromo;
     }
     
-   
 }
-

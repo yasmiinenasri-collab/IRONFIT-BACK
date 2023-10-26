@@ -16,7 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import models.SalleDeSport;
-import services.ServicesSalleDeSport;
+import Services.ServicesSalleDeSport;
 
 public class FXMLModifierSalleDeSportController implements Initializable {
     @FXML

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package services;
+package Services;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -25,7 +25,7 @@ public class ServicesAbonnement implements IServiceAbonnement<Abonnement> {
  Statement ste;
   PreparedStatement preparedStatement;
     public ServicesAbonnement() {
-        this.cnx= DataSource.getInstance().getConnection();
+        this.cnx= DataSource.getinstance().getCon();
     }
 
     @Override
@@ -123,7 +123,7 @@ public class ServicesAbonnement implements IServiceAbonnement<Abonnement> {
         return noms;
     }
  public List<String> getTypesAbonnements() {
-    Connection connection = DataSource.getInstance().getConnection();
+    Connection connection = DataSource.getinstance().getCon();
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     List<String> typesAbonnements = new ArrayList<>();
@@ -146,7 +146,7 @@ public class ServicesAbonnement implements IServiceAbonnement<Abonnement> {
     return typesAbonnements;
 }
  public Abonnement getAbonnementByType(String typeAbonnement) {
-    Connection connection = DataSource.getInstance().getConnection();
+    Connection connection = DataSource.getinstance().getCon();
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     Abonnement abonnement = null;
@@ -306,7 +306,7 @@ public List<Integer> getAllIdAbonnement() {
 }
    
    public void supprimerAbonnementParType(String type) {
-        Connection conn = DataSource.getInstance().getConnection();
+        Connection conn = DataSource.getinstance().getCon();
         PreparedStatement preparedStatement = null;
 
         try {
@@ -357,7 +357,7 @@ public void supprimerAbonnement(int abonnementId) {
     }
 }
 public void supprimerAbonnementParTypeEtPrix(String typeAbonnement, double prixAbonnement) {
-    Connection connection = DataSource.getInstance().getConnection();
+    Connection connection =  DataSource.getinstance().getCon();
     PreparedStatement preparedStatement = null;
 
     try {

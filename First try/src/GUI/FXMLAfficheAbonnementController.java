@@ -1,9 +1,12 @@
 package GUI;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,10 +15,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.stage.FileChooser;
 import models.Abonnement;
-import services.ServicesAbonnement;
+import models.SalleDeSport;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import Services.ServicesAbonnement;
+import Services.ServicesSalleDeSport;
 
 public class FXMLAfficheAbonnementController implements Initializable {
     @FXML
@@ -30,9 +41,11 @@ public class FXMLAfficheAbonnementController implements Initializable {
     @FXML
     private Button btnretourtest;
     @FXML
+    private Button excel;
+    @FXML
     private void retourAction1200(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLTest.fxml"));   
+            Parent root = FXMLLoader.load(getClass().getResource("HomeUser.fxml"));   
             btnretourtest.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -145,6 +158,60 @@ public class FXMLAfficheAbonnementController implements Initializable {
                     nombreTotalAbonnements--;
                     mettreAJourStatistique();
                 }
+            }
+        }
+    }
+
+    @FXML
+    private void btnexcel(ActionEvent event) {
+         FileChooser fileChooser = new FileChooser();
+        
+         // Set extension filter for Excel files
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Excel files (.xlsx)", ".xlsx");
+        fileChooser.getExtensionFilters().add(extFilter);
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(excel.getScene().getWindow());
+         if (file != null) {
+            try {
+                // Create new Excel workbook and sheet
+                Workbook workbook = new XSSFWorkbook();
+
+                Sheet sheet = workbook.createSheet("SalleDeSport");
+
+                // Create header row
+                Row headerRow = sheet.createRow(0);
+                headerRow.createCell(0).setCellValue("type");
+                headerRow.createCell(1).setCellValue("dateDebut");     
+                headerRow.createCell(2).setCellValue("dateFin");
+                headerRow.createCell(3).setCellValue("prix"); 
+                // Add data rows
+                ServicesAbonnement Abonnements = new ServicesAbonnement();
+                List<Abonnement> ab = Abonnements.afficherAbonnement();
+                for (int i = 0; i < ab.size(); i++) {
+                  Row row = sheet.createRow(i + 1);
+                   row.createCell(0).setCellValue(ab.get(i).getType());
+                   row.createCell(1).setCellValue(ab.get(i).getDateDebut());
+                   row.createCell(2).setCellValue(ab.get(i).getDateFin());
+                   row.createCell(3).setCellValue(ab.get(i).getPrix());
+                }
+                   // Write to file
+                FileOutputStream fileOut = new FileOutputStream(file);
+                workbook.write(fileOut);
+                fileOut.close();
+                workbook.close();
+                // Show success message
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Export Successful");
+                alert.setHeaderText(null);
+                alert.setContentText("Events exported to Excel file.");
+                alert.showAndWait();
+                } catch (Exception e) {
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Export Failed");
+                alert.setHeaderText(null);
+                alert.setContentText("An error occurred while exporting events to Excel file.");
+                alert.showAndWait();
             }
         }
     }

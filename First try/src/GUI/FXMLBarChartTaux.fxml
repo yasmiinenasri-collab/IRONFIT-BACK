@@ -3,9 +3,10 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLBarCharTauxController">
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="714.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLBarCharTauxController">
    <children>
       <BarChart fx:id="barcharts" prefHeight="400.0" prefWidth="600.0">
         <xAxis>
@@ -15,5 +16,6 @@
           <NumberAxis fx:id="NumberAxis" side="LEFT" />
         </yAxis>
       </BarChart>
+      <Button id="dark" fx:id="retouruserr" layoutX="536.0" layoutY="394.0" mnemonicParsing="false" onAction="#btnhomusr" prefHeight="48.0" prefWidth="122.0" stylesheets="@../Style/style.css" text="Retour" />
    </children>
 </AnchorPane>
