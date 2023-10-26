@@ -1,34 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package GUI;
 
-import APImed.APIsms;
-import entite.medecin;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-
+/**
+ *
+ * @author tlili
+ */
 public class NewFXMain extends Application {
-    
-   @Override
-    public void start(Stage primaryStage) throws IOException {
 
+    @Override
+    public void start(Stage primaryStage) {
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLinformationsupp.fxml"));
-        // Parent root = FXMLLoader.load(getClass().getResource("FXMLafficheRegimeAliUSER.fxml"));
-          // Parent root = FXMLLoader.load(getClass().getResource("FXMLafficherMEDUSER.fxml"));
-          //   Parent root = FXMLLoader.load(getClass().getResource("FXMLmodifierRegimeAli.fxml"));
-            // Parent root = FXMLLoader.load(getClass().getResource("FXMLmodifierMED.fxml"));
-        // Parent root = FXMLLoader.load(getClass().getResource("FXMLafficherMED.fxml"));
-        // Parent root = FXMLLoader.load(getClass().getResource("FXMLajouterMED.fxml"));
-          //  Parent root = FXMLLoader.load(getClass().getResource("FXMLajouterRegimeAli.fxml"));
-           // Parent root = FXMLLoader.load(getClass().getResource("FXMLafficherRegimeAli.fxml"));
-         //  Parent root = FXMLLoader.load(getClass().getResource("FXMLstatMED.fxml")); // statistique 
+          
+            Parent root = FXMLLoader.load(getClass().getResource("ecomerce.fxml"));
+
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -43,5 +49,5 @@ public class NewFXMain extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

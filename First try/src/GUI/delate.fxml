@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="795.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DeleteController">
+   <children>
+      <ImageView fitHeight="577.0" fitWidth="1194.0" layoutX="166.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/proteine-de-whey-pour-la-musculation.jpg" />
+         </image>
+      </ImageView>
+      <ListView fx:id="productListView" fixedCellSize="50.0" layoutX="214.0" layoutY="96.0" prefHeight="378.0" prefWidth="1012.0" />
+      <Button id="dark" layoutX="409.0" layoutY="516.0" mnemonicParsing="false" onAction="#deleteProduct" prefHeight="26.0" prefWidth="154.0" stylesheets="@../folder/styyyle.css" text="supprimer" />
+      <Button id="dark" fx:id="retourBtn" layoutX="214.0" layoutY="516.0" mnemonicParsing="false" onAction="#handleRetourBtn" prefHeight="26.0" prefWidth="153.0" stylesheets="@../folder/styyyle.css" text="retour" />
+      <ImageView fitHeight="95.0" fitWidth="111.0" layoutX="1252.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/logo2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

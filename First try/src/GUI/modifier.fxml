@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ModifierController">
+   <children>
+      <ImageView fitHeight="476.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/proteines-supplements(1).jpg" />
+         </image>
+      </ImageView>
+      <Button id="dark" fx:id="annulerBtn" layoutX="263.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleAnnulerBtn" prefHeight="26.0" prefWidth="147.0" stylesheets="@../folder/styyyle.css" text="annuler" />
+      <Text fill="RED" layoutX="130.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="prix">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button id="dark" fx:id="validerBtn" layoutX="450.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleValiderBtn" prefHeight="26.0" prefWidth="136.0" stylesheets="@../folder/styyyle.css" text="valider" />
+      <Text fill="RED" layoutX="28.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Idantifiant du produit" textAlignment="CENTER" wrappingWidth="204.00004882812505">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="idArea" layoutX="262.0" layoutY="85.0" prefHeight="26.0" prefWidth="310.0" />
+      <TextField fx:id="prixAREA" layoutX="259.0" layoutY="197.0" prefHeight="26.0" prefWidth="310.0" />
+      <ImageView fitHeight="78.0" fitWidth="70.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../folder/logo2.png" />
+         </image>
+      </ImageView>
+   </children>
+   </AnchorPane>
