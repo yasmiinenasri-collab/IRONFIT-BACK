@@ -1,0 +1,28 @@
+#index:
+#    path: /
+#    controller: App\Controller\AdminController::index
+#app_admin1:
+#    path: /admin1
+#    controller: App\Controller\AdminController::index1
+#category_show:
+ #   path: /products/category/{id}
+ #   controller: App\Controller\ProductController::showByCategory
+  #  methods: GET
+  # config/routes.yaml
+
+# config/routes.yaml
+
+#products_by_category_name:
+ #   path: /products/{categoryName}
+  #  controller: App\Controller\ProductController::productsByCategoryName
+   # methods: ['GET']
+app_shop:
+    path: /product/shop
+    controller: App\Controller\ProductController::shop
+    methods: ['GET']
+
+
+success_url:
+    path: '/success-url'
+    controller: 'App\Controller\PaymentController::success'
+
