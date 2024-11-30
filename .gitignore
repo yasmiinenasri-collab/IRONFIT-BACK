@@ -1,0 +1,18 @@
+# Exclure des répertoires spécifiques
+AppData/
+.VirtualBox/
+.docker/
+.bash_history
+
+# Exclure des fichiers de configuration spécifiques
+*.log
+*.tmp
+*.DS_Store
+
+# Exclure les fichiers générés
+/build/
+/dist/
+/node_modules/
+
+# Ignorer tout fichier ou dossier sensible
+/config/secrets.env
